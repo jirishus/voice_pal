@@ -1,12 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from 'src/app.service';
+import { QuestionService } from 'src/question/question.service';
 
 @Controller('questions')
 export class QuestionsController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly questionService: QuestionService) {}
 
   @Get()
-  getQuestions(): string {
-    return this.appService.getHello();
+  getQuestions(): Array<string> {
+    return this.questionService.getQuestions();
   }
 }
